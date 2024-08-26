@@ -31,17 +31,17 @@ class ListBuilder {
       throw new Exception("Empty inputs");
     }
 
-    Node firstNode = new Node();
-    firstNode.value = elementsToBeAdded.get(0);
-    firstNode.nextNode = null;
-    headNode = firstNode;
-    lastNode = headNode;
-
     // create the subsequent (HEAD) Nodes
-    for (int i=1; i<elementsToBeAdded.size(); i++) {
+    for (int i=0; i<elementsToBeAdded.size(); i++) {
       Node node = new Node();
       node.value = elementsToBeAdded.get(i);
       node.nextNode = null;
+      
+      if (i == 0) {
+        headNode = node;
+        lastNode = node;
+      }
+
       lastNode.nextNode = node;
       lastNode = node;
     }
